@@ -33,5 +33,5 @@ public class Main {
 
 Grupos=Grupos.dividir(Nombres);
     Grupos.imp(Grupos);
-        System.out.println("a");
+
 }}

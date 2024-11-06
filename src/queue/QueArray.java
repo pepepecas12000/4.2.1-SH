@@ -111,10 +111,11 @@ public class QueArray<T> implements IQueue<T>, Iterable<T> {
         QueArray<String> E_L=new QueArray<>(4);
         QueArray<String> M_P=new QueArray<>(4);
         QueArray<String> Q_Z=new QueArray<>(4);
+    Iterator rep=q.iterator();
+while (rep.hasNext()){
+    String palabra= (String) rep.next();
 
 
-        for (int j = 0; j <q._queue.length ; j++) {
-            String palabra= (String) q._queue[j];
 
         String apellidos="";
         boolean continuar=true;
@@ -122,9 +123,7 @@ public class QueArray<T> implements IQueue<T>, Iterable<T> {
             String letra = palabra.substring(i,i+1);
             if (letra.equals(" ") && continuar) {
                 apellidos= palabra.substring(i+1,palabra.length());;
-                System.out.println(apellidos);
                 continuar=false;
-                System.out.println(apellidos.substring(0,1));
             }
         }
         switch (apellidos.substring(0,1).toLowerCase()){
@@ -163,6 +162,7 @@ public class QueArray<T> implements IQueue<T>, Iterable<T> {
         grupos.queue(Q_Z);
     return grupos;
     }
+
     public int size() {
         return _couter; // Devuelve el número de elementos en la cola
     }
