@@ -1,4 +1,5 @@
 import exceptions.FullException;
+import queue.QueArray;
 import stacks.Stacks;
 
 import java.io.IOException;
@@ -24,25 +25,13 @@ public class Main {
 
         }
         System.out.println("Tiempo de ejecucion "+(end-start));*/
-        String palabra="Jesus Jimenez Mendoza";
-        String apellidos="";
-        boolean continuar=true;
-        for (int i = 0; i < palabra.length(); i++) {
-            String letra = palabra.substring(i,i+1);
-          if (letra.equals(" ") && continuar) {
-               apellidos= palabra.substring(i+1,palabra.length());;
-              System.out.println(apellidos);
-              continuar=false;
-              System.out.println(apellidos.substring(0,1));
-          }
-        }
-        switch (apellidos.substring(0,1).toLowerCase()){
-            case "a","b","c","d":
 
-        }
+        QueArray<QueArray<String>> Grupos=new QueArray<>(4);
+        QueArray<String> Nombres=new QueArray<>(20);
+        Nombres.queue("Jesus Jimenez");
+        Nombres.queue("Jesus Aguillar");
 
+Grupos=Grupos.dividir(Nombres);
+    Grupos.imp(Grupos);
 
-
-
-    }
-}
+}}

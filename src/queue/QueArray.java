@@ -3,6 +3,7 @@ package queue;
 import exceptions.EmptyException;
 import exceptions.FullException;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class QueArray<T> implements IQueue<T>, Iterable<T> {
@@ -21,6 +22,7 @@ public class QueArray<T> implements IQueue<T>, Iterable<T> {
         _front=-1;
         _size= _queue.length;
     }
+
 
 
     @Override
@@ -102,4 +104,86 @@ public class QueArray<T> implements IQueue<T>, Iterable<T> {
         }
         return "Queue [ "+cadena+" ]";
     }
+
+
+    public QueArray<QueArray<String>> dividir(QueArray<String> q) throws FullException {
+        QueArray<String> A_D=new QueArray<>(4);
+        QueArray<String> E_L=new QueArray<>(4);
+        QueArray<String> M_P=new QueArray<>(4);
+        QueArray<String> Q_Z=new QueArray<>(4);
+
+
+        for (int j = 0; j <q._queue.length ; j++) {
+            String palabra= (String) q._queue[j];
+
+        String apellidos="";
+        boolean continuar=true;
+        for (int i = 0; i < palabra.length(); i++) {
+            String letra = palabra.substring(i,i+1);
+            if (letra.equals(" ") && continuar) {
+                apellidos= palabra.substring(i+1,palabra.length());;
+                System.out.println(apellidos);
+                continuar=false;
+                System.out.println(apellidos.substring(0,1));
+            }
+        }
+        switch (apellidos.substring(0,1).toLowerCase()){
+            case "a","b","c","d":
+                if (A_D.isFull()){
+                    A_D._queue=Arrays.copyOf(A_D._queue,A_D._queue.length+1);
+                }
+                A_D.queue(apellidos);
+                break;
+                case "e","f","g","h","i","j","k","l":
+                    if (E_L.isFull()){
+                        E_L._queue=Arrays.copyOf(E_L._queue,E_L._queue.length+1);
+                    }
+                    E_L.queue(apellidos);
+                    break;
+                    case "m","n","ñ","o","p":
+                        if (M_P.isFull()){
+                            M_P._queue=Arrays.copyOf(M_P._queue,M_P._queue.length+1);
+                        }
+                        M_P.queue(apellidos);
+                        break;
+                        case "q","r","s","t","u","v","w","x","y","z":
+                            if (Q_Z.isFull()){
+                                Q_Z._queue=Arrays.copyOf(Q_Z._queue,Q_Z._queue.length+1);
+                            }
+                            Q_Z.queue(apellidos);
+                            break;
+                            default:
+                                System.out.println(apellidos+" no valido");
+        }
+    }
+    QueArray<QueArray<String>> grupos= new QueArray<>();
+        grupos.queue(A_D);
+        grupos.queue(E_L);
+        grupos.queue(M_P);
+        grupos.queue(Q_Z);
+    return grupos;
+    }
+    public int size() {
+        return _couter; // Devuelve el número de elementos en la cola
+    }
+
+    public T get(int index) {
+        if (index < 0 || index >= _couter) {
+            throw new IndexOutOfBoundsException("Índice fuera de rango");
+        }
+        return _queue[(_front + 1 + index) % _size]; // Calcula la posición real en la cola circular
+    }
+
+    public void imp(QueArray<QueArray<String>> Grupos) {
+        for (int i = 0; i < Grupos._couter; i++) { // Recorre el array de grupos
+            QueArray<String> grupo = Grupos.get(i);
+            System.out.println("Grupo " + (i + 1) + ":");
+
+            for (int j = 0; j < grupo.size(); j++) { // Recorre cada grupo para imprimir sus elementos
+                System.out.println(grupo.get(j));
+            }
+            System.out.println(); // Espacio entre grupos
+        }
+    }
+
 }
