@@ -114,9 +114,6 @@ public class QueArray<T> implements IQueue<T>, Iterable<T> {
     Iterator rep=q.iterator();
 while (rep.hasNext()){
     String palabra= (String) rep.next();
-
-
-
         String apellidos="";
         boolean continuar=true;
         for (int i = 0; i < palabra.length(); i++) {
