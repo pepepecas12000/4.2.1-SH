@@ -22,7 +22,7 @@ public class Main {
         end=System.nanoTime();
         for (Integer names:name){
             System.out.println(names);
-
+            System.out.println("lol");
         }
         System.out.println("Tiempo de ejecucion "+(end-start));
 /*
