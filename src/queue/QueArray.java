@@ -104,7 +104,9 @@ public class QueArray<T> implements IQueue<T>, Iterable<T> {
         }
         return "Queue [ "+cadena+" ]";
     }
-
+    private void aumentar() {
+        _queue = Arrays.copyOf(_queue, _size+1);
+    }
 
     public QueArray<QueArray<String>> dividir(QueArray<String> q) throws FullException {
         QueArray<String> A_D=new QueArray<>(4);
@@ -123,34 +125,50 @@ while (rep.hasNext()){
                 continuar=false;
             }
         }
-        switch (apellidos.substring(0,1).toLowerCase()){
-            case "a","b","c","d":
-                if (A_D.isFull()){
-                    A_D._queue=Arrays.copyOf(A_D._queue,A_D._queue.length+1);
-                }
-                A_D.queue(apellidos);
-                break;
-                case "e","f","g","h","i","j","k","l":
-                    if (E_L.isFull()){
-                        E_L._queue=Arrays.copyOf(E_L._queue,E_L._queue.length+1);
-                    }
-                    E_L.queue(apellidos);
-                    break;
-                    case "m","n","ñ","o","p":
-                        if (M_P.isFull()){
-                            M_P._queue=Arrays.copyOf(M_P._queue,M_P._queue.length+1);
-                        }
-                        M_P.queue(apellidos);
-                        break;
-                        case "q","r","s","t","u","v","w","x","y","z":
-                            if (Q_Z.isFull()){
-                                Q_Z._queue=Arrays.copyOf(Q_Z._queue,Q_Z._queue.length+1);
-                            }
-                            Q_Z.queue(apellidos);
-                            break;
-                            default:
-                                System.out.println(apellidos+" no valido");
-        }
+    switch (apellidos.substring(0, 1).toLowerCase()) {
+        case "a", "b", "c", "d":
+            try {
+                A_D.isFull();
+                A_D.queue(palabra);
+            } catch (FullException e) {
+                A_D.aumentar();
+                A_D.queue(palabra);
+            }
+            break;
+
+        case "e", "f", "g", "h", "i", "j", "k", "l":
+            try {
+                E_L.isFull();
+                E_L.queue(palabra);
+            } catch (FullException e) {
+                E_L.aumentar();
+                E_L.queue(palabra);
+            }
+            break;
+
+        case "m", "n", "ñ", "o", "p":
+            try {
+                M_P.isFull();
+                M_P.queue(palabra);
+            } catch (FullException e) {
+                M_P.aumentar();
+                M_P.queue(palabra);
+            }
+            break;
+
+        case "q", "r", "s", "t", "u", "v", "w", "x", "y", "z":
+            try {
+                Q_Z.isFull();
+                Q_Z.queue(palabra);
+            } catch (FullException e) {
+                Q_Z.aumentar();
+                Q_Z.queue(palabra);
+            }
+            break;
+
+        default:
+            System.out.println(palabra + " no válido");
+    }
     }
     QueArray<QueArray<String>> grupos= new QueArray<>();
         grupos.queue(A_D);
@@ -160,26 +178,21 @@ while (rep.hasNext()){
     return grupos;
     }
 
-    public int size() {
-        return _couter; // Devuelve el número de elementos en la cola
-    }
 
-    public T get(int index) {
-        if (index < 0 || index >= _couter) {
-            throw new IndexOutOfBoundsException("Índice fuera de rango");
-        }
-        return _queue[(_front + 1 + index) % _size]; // Calcula la posición real en la cola circular
+
+    public T buscar(int index) {
+        return _queue[(_front + 1 + index) % _size];
     }
 
     public void imp(QueArray<QueArray<String>> Grupos) {
-        for (int i = 0; i < Grupos._couter; i++) { // Recorre el array de grupos
-            QueArray<String> grupo = Grupos.get(i);
+        for (int i = 0; i < Grupos._couter; i++) {
+            QueArray<String> grupo = Grupos.buscar(i);
             System.out.println("Grupo " + (i + 1) + ":");
 
-            for (int j = 0; j < grupo.size(); j++) { // Recorre cada grupo para imprimir sus elementos
-                System.out.println(grupo.get(j));
+            for (int j = 0; j < grupo._couter; j++) {
+                System.out.println(grupo.buscar(j));
             }
-            System.out.println(); // Espacio entre grupos
+            System.out.println();
         }
     }
 
