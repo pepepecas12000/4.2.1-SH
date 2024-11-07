@@ -100,22 +100,15 @@ public class Stacks<T> implements IStacks<T>, Iterable<T> {
         return -1;
     }
 
-    public void invertir(Stacks p){
-        int fin=0,inicio=_top,contador=0;
-
-
+    public void invert(Stacks<T> p){
+        int fin=0,inicio=p._top;
             while (inicio>fin){
-                T kik=_stack[inicio];
-                _stack[inicio]=_stack[fin];
-                _stack[fin]=kik;
-                contador++;
-                inicio-=contador;
-                fin+=contador;
-
+                T kik=  p._stack[inicio];
+                p._stack[inicio]=p._stack[fin];
+                p._stack[fin]=kik;
+                inicio--;
+                fin++;
             }
-
-
-
     }
 
 
