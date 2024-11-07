@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) throws FullException {
 
         QueArray<QueArray<String>> Grupos=new QueArray<>(4);
-        QueArray<String> Nombres=new QueArray<>(20);
+        QueArray<String> Nombres=new QueArray<>(21);
         Nombres.queue("Juan Pérez García");
         Nombres.queue("María Gómez Sánchez");
         Nombres.queue("Carlos Díaz Fernández");
@@ -19,7 +19,7 @@ public class Main {
         Nombres.queue("Laura Escobar Martínez");
         Nombres.queue("Martín López Castillo");
         Nombres.queue("Rosa Martínez Vargas");
-        Nombres.queue("Diego Álvarez Gutiérrez");
+        Nombres.queue("Diego Alvarez Gutiérrez");
         Nombres.queue("Fernanda Gutiérrez Navarro");
         Nombres.queue("Tomás Quintana Ríos");
         Nombres.queue("Sofía Benítez Rodríguez");
@@ -29,10 +29,10 @@ public class Main {
         Nombres.queue("Paula Suárez Villalobos");
         Nombres.queue("Alberto Vargas Nieto");
         Nombres.queue("Beatriz Zamora Ávila");
-
+        Nombres.queue("Jesus Jimenez Mendoza");
 
         Grupos=Grupos.dividir(Nombres);
-    Grupos.imp(Grupos);
+        Grupos.imp(Grupos);
 
 
 /*
