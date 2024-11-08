@@ -6,9 +6,37 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws FullException {
+        //Primer ejercicio:
+float start,end;
+Stacks<Integer> numeros = new Stacks<>(4);
+        numeros.push(0);
+        numeros.push(1);
+        numeros.push(2);
+        numeros.push(3);
+
+        for (Integer num:numeros){
+            System.out.println(num);
+
+        }
+
+        System.out.println("\n");
+
+        start=System.nanoTime();
+        numeros.invert(numeros);
+        end=System.nanoTime();
+
+        for (Integer num:numeros){
+            System.out.println(num);
+
+        }
+        System.out.println("Tiempo de ejecucion "+(end-start));
+/*
+
+        //Ejercicio 2: *Los metodo estan en QueArray
 
         QueArray<QueArray<String>> Grupos=new QueArray<>(4);
         QueArray<String> Nombres=new QueArray<>(21);
+        //el formato de los nombres es : primer nombre (no compatible con dos nombres) + dos/ un apellido
         Nombres.queue("Juan Pérez García");
         Nombres.queue("María Gómez Sánchez");
         Nombres.queue("Carlos Díaz Fernández");
@@ -33,30 +61,7 @@ public class Main {
 
         Grupos=Grupos.dividir(Nombres);
         Grupos.imp(Grupos);
-
-
-/*
-float start,end;
-Stacks<Integer> numeros = new Stacks<>(4);
-        numeros.push(0);
-        numeros.push(1);
-        numeros.push(2);
-        numeros.push(3);
-        for (Integer num:numeros){
-            System.out.println(num);
-
-        }
-        System.out.println("\n");
-        start=System.nanoTime();
-        numeros.invert(numeros);
-        end=System.nanoTime();
-        for (Integer num:numeros){
-            System.out.println(num);
-
-        }
-        System.out.println("Tiempo de ejecucion "+(end-start));
 */
-
 
 
 }}

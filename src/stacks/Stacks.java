@@ -130,11 +130,6 @@ public class Stacks<T> implements IStacks<T>, Iterable<T> {
     }
 
 
-
-    public int get_size() {
-        return _size;
-    }
-
     public int get_top() {
         return _top;
     }
