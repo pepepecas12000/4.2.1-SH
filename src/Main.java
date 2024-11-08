@@ -1,48 +1,67 @@
 import exceptions.FullException;
+import queue.QueArray;
 import stacks.Stacks;
 
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws FullException {
-        float start,end;
-       /* Stacks<Integer> name = new Stacks<>(4);
-        name.push(0);
-        name.push(1);
-        name.push(2);
-        name.push(3);
-        for (Integer names:name){
-            System.out.println(names);
+        //Primer ejercicio:
+float start,end;
+Stacks<Integer> numeros = new Stacks<>(4);
+        numeros.push(0);
+        numeros.push(1);
+        numeros.push(2);
+        numeros.push(3);
+
+        for (Integer num:numeros){
+            System.out.println(num);
 
         }
+
         System.out.println("\n");
+
         start=System.nanoTime();
-        name.invertir(name);
+        numeros.invert(numeros);
         end=System.nanoTime();
-        for (Integer names:name){
-            System.out.println(names);
+
+        for (Integer num:numeros){
+            System.out.println(num);
 
         }
-        System.out.println("Tiempo de ejecucion "+(end-start));*/
-        String palabra="Jesus Jimenez Mendoza";
-        String apellidos="";
-        boolean continuar=true;
-        for (int i = 0; i < palabra.length(); i++) {
-            String letra = palabra.substring(i,i+1);
-          if (letra.equals(" ") && continuar) {
-               apellidos= palabra.substring(i+1,palabra.length());;
-              System.out.println(apellidos);
-              continuar=false;
-              System.out.println(apellidos.substring(0,1));
-          }
-        }
-        switch (apellidos.substring(0,1).toLowerCase()){
-            case "a","b","c","d":
+        System.out.println("Tiempo de ejecucion "+(end-start));
+/*
 
-        }
+        //Ejercicio 2: *Los metodo estan en QueArray
+
+        QueArray<QueArray<String>> Grupos=new QueArray<>(4);
+        QueArray<String> Nombres=new QueArray<>(21);
+        //el formato de los nombres es : primer nombre (no compatible con dos nombres) + dos/ un apellido
+        Nombres.queue("Juan Pérez García");
+        Nombres.queue("María Gómez Sánchez");
+        Nombres.queue("Carlos Díaz Fernández");
+        Nombres.queue("Luisa Herrera López");
+        Nombres.queue("Ana Ramírez Torres");
+        Nombres.queue("Pedro Fernández Cruz");
+        Nombres.queue("José Ortega Morales");
+        Nombres.queue("Laura Escobar Martínez");
+        Nombres.queue("Martín López Castillo");
+        Nombres.queue("Rosa Martínez Vargas");
+        Nombres.queue("Diego Alvarez Gutiérrez");
+        Nombres.queue("Fernanda Gutiérrez Navarro");
+        Nombres.queue("Tomás Quintana Ríos");
+        Nombres.queue("Sofía Benítez Rodríguez");
+        Nombres.queue("David Castro Peña");
+        Nombres.queue("Elena Morales Herrera");
+        Nombres.queue("Manuel Jiménez Paredes");
+        Nombres.queue("Paula Suárez Villalobos");
+        Nombres.queue("Alberto Vargas Nieto");
+        Nombres.queue("Beatriz Zamora Ávila");
+        Nombres.queue("Jesus Jimenez Mendoza");
+
+        Grupos=Grupos.dividir(Nombres);
+        Grupos.imp(Grupos);
+*/
 
 
-
-
-    }
-}
+}}
